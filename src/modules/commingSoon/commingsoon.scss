@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Nunito Sans", sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+    padding: 0;
+}
+.backgrond-div-soon {
+    overflow: hidden;
+    background-color: black;
+    background-image: url("../../assets/images/succes/background.png");
+    width: 100%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    .hero-banner {
+        .hero-banner-container {
+            max-width: 1130px;
+            margin: 0 auto;
+            @media (max-width: 1024px) {
+                padding: 0 40px;
+            }
+            @media (max-width: 576px) {
+                padding: 0 20px;
+            }
+            .hero-banner-first {
+                padding: 48px 0 135px 0;
+                .hero-banner-moon {
+                    background-image: url("../../assets/images/succes/moon.png");
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    width: 100%;
+                    height: 100vh;
+                    h1 {
+                        font-size: 80px;
+                        font-weight: 700;
+                        line-height: 109.12px;
+                        text-align: center;
+                        color: #ffffff;
+                        padding: 280px 0 0 0;
+                        text-transform: uppercase;
+                        @media (max-width: 1024px) {
+                            font-size: 60px;
+                            padding: 200px 0 0 0;
+                            line-height: 90px;
+                        }
+                        @media (max-width: 576px) {
+                            font-size: 40px;
+                            line-height: 70px;
+                            padding: 100px 0 0 0;
+                        }
+                    }
+                    .authintication-box-input {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding-top: 40px;
+                        @media (max-width: 1024px) {
+                            padding: 20px 40px 0 40px;
+                        }
+                        .authintication-box-input-flex {
+                            width: 510px;
+                            display: flex;
+                            gap: 20px;
+                            .authintication-box-input-flex-input {
+                                width: 100%;
+                                input {
+                                    width: calc(100% - 44px);
+                                    padding: 16px 22px;
+                                    background-color: #222224;
+                                    border: none;
+                                    border-radius: 8px;
+                                    color: #ffffff;
+                                    &:focus {
+                                        outline: none;
+                                    }
+                                }
+                                ::placeholder {
+                                    color: #868686;
+                                    font-size: 12px;
+                                    font-weight: 400;
+                                    line-height: 16.37px;
+                                }
+                            }
+                            .authintication-box-input-flex-button {
+                                display: flex;
+                                align-items: center;
+                                button {
+                                    width: 140px;
+                                    padding: 14px;
+                                    background: linear-gradient(
+                                        rgba(161, 108, 244, 1),
+                                        rgba(255, 125, 167, 1),
+                                        rgba(255, 171, 112, 1)
+                                    );
+                                    font-size: 16px;
+                                    color: #ffffff;
+                                    font-weight: 700;
+                                    line-height: 22px;
+                                    border-radius: 6px;
+                                    border: none;
+                                    cursor: pointer;
+                                }
+                            }
+                        }
+                        @media (max-width: 576px) {
+                            padding-top: 20px;
+                            .authintication-box-input-flex {
+                                display: block;
+                                input {
+                                    width: 260px;
+                                    margin-bottom: 20px;
+                                }
+                                .authintication-box-input-flex-button {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
