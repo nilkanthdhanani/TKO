@@ -9,6 +9,7 @@ import telegram from "../../assets/images/succes/telegram.png";
 import { Link } from 'react-router-dom';
 
 export default function Success() {
+
   return (
     <div>
       <div className="backgrond-div">
@@ -135,8 +136,12 @@ export default function Success() {
               <p>2023 TKO Extracts</p>
             </div>
             <div className="footer-div2-icon">
-              <img src={instagram} alt="instagram" />
-              <img src={telegram} alt="telegram" />
+              <Link target='blank' to={"https://www.instagram.com/"}>
+                <img src={instagram} alt="instagram" />
+              </Link>
+              <Link target='blank' to={"https://web.telegram.org/a/"}>
+                <img src={telegram} alt="telegram" />
+              </Link>
             </div>
           </div>
         </div>

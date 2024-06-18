@@ -370,9 +370,15 @@ p {
                                 border: none;
                                 border-radius: 8px;
                                 color: #ffffff;
+                                appearance: none;
                                 &:focus {
                                     outline: none;
                                 }
+                            }
+                            input::-webkit-outer-spin-button,
+                            input::-webkit-inner-spin-button {
+                                -webkit-appearance: none;
+                                margin: 0;
                             }
                             ::placeholder {
                                 color: #ffffff;
