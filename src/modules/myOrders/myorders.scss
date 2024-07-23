@@ -181,59 +181,72 @@ p {
                     border: 1px solid rgba(225, 225, 225, 0.4);
                     border-radius: 14px;
                     padding: 60px;
-                    .authintication-box-input {
+                    position: relative;
+                    &::after {
+                        position: absolute;
+                        content: "";
+                        left: -1%;
+                        bottom: -1%;
+                        height: 52%;
+                        width: 102%;
+                        background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+                        z-index: 1;
+                    }
+                    .authintication-box-input-flex {
+                        position: relative;
+                        z-index: 2;
+                        padding-top: 40px;
+                        max-width: 680px;
+                        margin: 0 auto;
                         display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        .authintication-box-input-flex {
-                            width: 680px;
-                            display: flex;
-                            gap: 40px;
-                            .authintication-box-input-flex-input {
-                                width: 100%;
-                                input {
-                                    width: calc(100% - 44px);
-                                    height: 50px;
-                                    padding: 0 22px;
-                                    background-color: #222224;
-                                    border: none;
-                                    border-radius: 8px;
-                                    color: #ffffff;
-                                    &:focus {
-                                        outline: none;
-                                    }
-                                }
-                                input::-webkit-outer-spin-button,
-                                input::-webkit-inner-spin-button {
-                                    -webkit-appearance: none;
-                                    margin: 0;
-                                }
-                                ::placeholder {
-                                    color: #ffffff;
-                                    font-size: 14px;
-                                    font-weight: 400;
-                                    line-height: 19.1px;
+                        gap: 40px;
+                        .authintication-box-input-flex-input {
+                            width: 100%;
+                            input {
+                                width: calc(100% - 44px);
+                                padding: 16px 22px;
+                                background-color: #222224;
+                                border: none;
+                                border-radius: 8px;
+                                color: #ffffff;
+                                appearance: none;
+                                &:focus {
+                                    outline: none;
                                 }
                             }
+                            ::placeholder {
+                                color: #ffffff;
+                                font-size: 14px;
+                                font-weight: 400;
+                                line-height: 19.1px;
+                            }
+                        }
+                        .authintication-box-input-flex-button {
+                            display: flex;
+                            align-items: center;
+                            button {
+                                padding: 14px 43px;
+                                background: linear-gradient(
+                                    rgba(161, 108, 244, 1),
+                                    rgba(255, 125, 167, 1),
+                                    rgba(255, 171, 112, 1)
+                                );
+                                font-size: 16px;
+                                color: #ffffff;
+                                font-weight: 700;
+                                line-height: 22px;
+                                text-align: left;
+                                border-radius: 6px;
+                                border: none;
+                                cursor: pointer;
+                            }
+                        }
+                        @media (max-width: 576px) {
+                            flex-wrap: wrap;
+                            gap: 20px;
                             .authintication-box-input-flex-button {
-                                display: flex;
-                                align-items: center;
-                                button {
-                                    padding: 14px 43px;
-                                    background: linear-gradient(
-                                        rgba(161, 108, 244, 1),
-                                        rgba(255, 125, 167, 1),
-                                        rgba(255, 171, 112, 1)
-                                    );
-                                    font-size: 16px;
-                                    color: #ffffff;
-                                    font-weight: 700;
-                                    line-height: 22px;
-                                    text-align: left;
-                                    border-radius: 6px;
-                                    border: none;
-                                    cursor: pointer;
-                                }
+                                justify-content: center;
+                                width: 100%;
                             }
                         }
                     }
@@ -302,11 +315,15 @@ p {
                             margin: 0 0 20px 0;
                         }
                         .ord-list-nmb-one {
+                            width: 100%;
                             display: flex;
                             align-items: center;
                             gap: 80px;
                             @media (max-width: 1024px) {
                                 gap: 40px;
+                            }
+                            @media (max-width: 576px) {
+                                justify-content: space-between;
                             }
                             .ord-line-inner-frst-box {
                                 text-align: left;
@@ -332,11 +349,16 @@ p {
                             }
                         }
                         .ord-list-nmb-two {
+                            width: 100%;
                             display: flex;
                             align-items: center;
+                            justify-content: space-between;
                             gap: 80px;
                             @media (max-width: 1024px) {
                                 gap: 40px;
+                            }
+                            @media (max-width: 576px) {
+                                gap: 20px;
                             }
                             .ord-line-inner-frst-box {
                                 text-align: left;
@@ -429,6 +451,15 @@ p {
                                 line-height: 22px;
                                 text-transform: uppercase;
                                 text-align: center;
+                                &:hover {
+                                    background: -webkit-linear-gradient(
+                                        rgba(161, 108, 244, 1),
+                                        rgba(255, 125, 167, 1),
+                                        rgba(255, 171, 112, 1)
+                                    );
+                                    background-clip: text;
+                                    -webkit-text-fill-color: transparent;
+                                }
                             }
                             @media (max-width: 1120px) {
                                 gap: 30px;
@@ -455,7 +486,7 @@ p {
                                 input {
                                     width: calc(450px - 24px);
                                     border-radius: 6px;
-                                    padding: 14px 0 14px 24px;
+                                    padding: 16px 0 16px 24px;
                                     border: none;
                                     color: #ffffff;
                                     background-color: #2a2a2c;
@@ -477,7 +508,7 @@ p {
                                     justify-content: flex-end;
                                     button {
                                         width: 140px;
-                                        height: 46px;
+                                        height: 50px;
                                         background: linear-gradient(
                                             rgba(161, 108, 244, 1),
                                             rgba(255, 125, 167, 1),

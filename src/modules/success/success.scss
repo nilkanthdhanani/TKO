@@ -119,14 +119,17 @@ p {
             margin: 0 auto;
             .hero-banner-first {
                 padding: 48px 0 135px 0;
+                @media (max-width: 1024px) {
+                    padding: 48px 0;
+                }
                 .hero-banner-moon {
                     background-image: url("../../assets/images/succes/moon.png");
                     background-size: cover;
                     background-repeat: no-repeat;
                     width: 100%;
-                    height: 570px;
                     @media (max-width: 1024px) {
-                        object-fit: contain;
+                        height: auto;
+                        background-position: center;
                     }
                     h1 {
                         font-size: 38px;
@@ -280,49 +283,64 @@ p {
                 border: 1px solid rgba(255, 255, 255, 0.4);
                 border-radius: 12px;
                 height: 100%;
-                .results-div-grid1-button1,
-                .results-div-grid1-button2,
-                .results-div-grid1-button3 {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    padding-top: 55px;
-                    @media (max-width: 710px) {
-                        padding-top: 30px;
-                    }
-                    button {
-                        background: linear-gradient(
-                            rgba(161, 108, 244, 1),
-                            rgba(255, 125, 167, 1),
-                            rgba(255, 171, 112, 1)
-                        );
-                        border: none;
-                        border-radius: 3px;
-                        width: 172px;
-                        padding: 10px 0;
-                        font-size: 16px;
-                        color: #ffffff;
-                        font-weight: 700;
-                        line-height: 21.82px;
-                        text-transform: uppercase;
+                position: relative;
+                &::after {
+                    position: absolute;
+                    content: "";
+                    left: -1%;
+                    bottom: -1%;
+                    height: 52%;
+                    width: 102%;
+                    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+                    z-index: 1;
+                }
+                .results-div-grid1-border {
+                    position: relative;
+                    z-index: 2;
+                    .results-div-grid1-button1,
+                    .results-div-grid1-button2,
+                    .results-div-grid1-button3 {
                         display: flex;
                         align-items: center;
                         justify-content: center;
+                        padding-top: 55px;
+                        @media (max-width: 710px) {
+                            padding-top: 30px;
+                        }
+                        button {
+                            background: linear-gradient(
+                                rgba(161, 108, 244, 1),
+                                rgba(255, 125, 167, 1),
+                                rgba(255, 171, 112, 1)
+                            );
+                            border: none;
+                            border-radius: 3px;
+                            width: 172px;
+                            padding: 10px 0;
+                            font-size: 16px;
+                            color: #ffffff;
+                            font-weight: 700;
+                            line-height: 21.82px;
+                            text-transform: uppercase;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
                     }
-                }
-                .results-div-grid1-button2 {
-                    padding-top: 40px;
-                    button {
-                        background: rgba(255, 255, 255, 0.1);
+                    .results-div-grid1-button2 {
+                        padding-top: 40px;
+                        button {
+                            background: rgba(255, 255, 255, 0.1);
+                        }
                     }
-                }
-                .results-div-grid1-button3 {
-                    padding-top: 40px;
-                    button {
-                        background: rgba(255, 255, 255, 0.1);
-                    }
-                    @media (max-width: 576px) {
-                        padding: 40px 0 30px 0;
+                    .results-div-grid1-button3 {
+                        padding-top: 40px;
+                        button {
+                            background: rgba(255, 255, 255, 0.1);
+                        }
+                        @media (max-width: 576px) {
+                            padding: 40px 0 30px 0;
+                        }
                     }
                 }
             }
@@ -332,50 +350,65 @@ p {
                 border-radius: 12px;
                 height: calc(523px - 60px);
                 padding: 30px;
+                position: relative;
+                &::after {
+                    position: absolute;
+                    content: "";
+                    left: -1%;
+                    bottom: -1%;
+                    height: 52%;
+                    width: 102%;
+                    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+                    z-index: 1;
+                }
                 @media (max-width: 880px) {
                     height: auto;
                 }
-                .results-div-grid2-head {
-                    height: 37px;
-                    border-bottom: 1px dashed rgba(255, 255, 255, 0.4);
-                    h6 {
-                        font-size: 16px;
-                        color: #ffffff;
-                        font-weight: 700;
-                        line-height: 21.82px;
-                        text-align: left;
+                .results-div-grid2-border {
+                    position: relative;
+                    z-index: 2;
+                    .results-div-grid2-head {
+                        height: 37px;
+                        border-bottom: 1px dashed rgba(255, 255, 255, 0.4);
+                        h6 {
+                            font-size: 16px;
+                            color: #ffffff;
+                            font-weight: 700;
+                            line-height: 21.82px;
+                            text-align: left;
+                        }
+                        @media (max-width: 576px) {
+                            display: flex;
+                            justify-content: center;
+                        }
                     }
-                    @media (max-width: 576px) {
+                    .results-div-grid2-head-list {
+                        padding-top: 30px;
                         display: flex;
-                        justify-content: center;
-                    }
-                }
-                .results-div-grid2-head-list {
-                    padding-top: 30px;
-                    display: flex;
-                    align-items: center;
-                    gap: 24px;
-                    flex-wrap: wrap;
-                    @media (max-width: 576px) {
-                        justify-content: center;
-                    }
-                    button {
-                        padding: 6px 16px;
-                        background: rgba(255, 255, 255, 0.12);
-                        border: none;
-                        border-radius: 38px;
-                        font-size: 14px;
-                        color: #ffffff;
-                        font-weight: 600;
-                        line-height: 19.1px;
-                        text-align: left;
-                        cursor: pointer;
-                        &:hover {
-                            background: linear-gradient(
-                                rgba(161, 108, 244, 0.5),
-                                rgba(255, 125, 167, 0.5),
-                                rgba(255, 171, 112, 0.5)
-                            );
+                        align-items: center;
+                        gap: 24px;
+                        flex-wrap: wrap;
+                        @media (max-width: 576px) {
+                            justify-content: center;
+                        }
+                        button {
+                            padding: 6px 16px;
+                            background: rgba(255, 255, 255, 0.12);
+                            border: none;
+                            border-radius: 38px;
+                            font-size: 14px;
+                            color: #ffffff;
+                            font-weight: 600;
+                            line-height: 19.1px;
+                            text-align: left;
+                            cursor: pointer;
+                            &:hover {
+                                background: linear-gradient(
+                                    rgba(161, 108, 244, 0.5),
+                                    rgba(255, 125, 167, 0.5),
+                                    rgba(255, 171, 112, 0.5)
+                                );
+                            }
                         }
                     }
                 }
@@ -447,6 +480,15 @@ p {
                         line-height: 22px;
                         text-transform: uppercase;
                         text-align: center;
+                        &:hover {
+                            background: -webkit-linear-gradient(
+                                rgba(161, 108, 244, 1),
+                                rgba(255, 125, 167, 1),
+                                rgba(255, 171, 112, 1)
+                            );
+                            background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                        }
                     }
                     @media (max-width: 1120px) {
                         gap: 30px;
@@ -473,7 +515,7 @@ p {
                         input {
                             width: calc(450px - 24px);
                             border-radius: 6px;
-                            padding: 14px 0 14px 24px;
+                            padding: 16px 0 16px 24px;
                             border: none;
                             color: #ffffff;
                             background-color: #2a2a2c;
@@ -495,7 +537,7 @@ p {
                             justify-content: flex-end;
                             button {
                                 width: 140px;
-                                height: 46px;
+                                height: 50px;
                                 background: linear-gradient(
                                     rgba(161, 108, 244, 1),
                                     rgba(255, 125, 167, 1),

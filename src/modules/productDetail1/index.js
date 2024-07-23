@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import './productdetail1.scss';
 import shadow from "../../assets/images/productDetail1/shadow.png";
 import logo from "../../assets/images/productDetail1/logo.png";
@@ -20,9 +20,14 @@ import productVideo from "../../assets/images/productDetail1/productVideo.gif";
 import { Link } from 'react-router-dom';
 
 export default function ProductDetail1() {
+
+  const topRef = useRef(null);
+  useEffect(() => {
+    topRef.current.scrollIntoView({ behavior: "smooth" });
+  }, []);
   return (
     <div>
-      <div className="product-background">
+      <div className="product-background" ref={topRef}>
         <div className="product-background-shadow">
           <img src={shadow} alt="shadow" />
         </div>

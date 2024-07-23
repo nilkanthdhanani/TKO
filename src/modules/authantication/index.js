@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import './authantication.scss';
 import ellipse from "../../assets/images/authantication/ellipse.png";
 import ellipse2 from "../../assets/images/authantication/ellipse2.png";
@@ -11,9 +11,28 @@ import lock from "../../assets/images/authantication/lock.png";
 import redbox from "../../assets/images/authantication/redbox.png";
 import ellipse673 from "../../assets/images/authantication/ellipse673.png";
 import close from "../../assets/images/authantication/close.png";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Authantication() {
+  const [email, setEmail] = React.useState('');
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (emailPattern.test(email)) {
+      console.log({ email });
+      setEmail('');
+      navigate('/');
+    } else {
+      alert('Please enter a valid email address.');
+    }
+  };
+
   return (
     <div>
       <div className="first-div-authantication">
@@ -27,14 +46,14 @@ export default function Authantication() {
             <div className="product-div-light-title-head">
               <h2>Verification<span>Code</span></h2>
             </div>
-            <div className="footer-div1-flex-input">
-              <input type="text" placeholder='Enter Email' />
-              <Link to={"/"}>
+            <form onSubmit={handleSubmit}>
+              <div className="footer-div1-flex-input">
+                <input type="email" onChange={handleChange} value={email} placeholder='Enter Email' required />
                 <div className="footer-div1-flex-button">
-                  <button>Subscribe</button>
+                  <button type="submit">Subscribe</button>
                 </div>
-              </Link>
-            </div>
+              </div>
+            </form>
           </div>
         </div>
         <div className="first-div-contant">
@@ -104,5 +123,5 @@ export default function Authantication() {
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './success.scss';
 import logo from "../../assets/images/succes/logo.png";
 import lockbg from "../../assets/images/succes/lockbg.png";
@@ -9,10 +9,33 @@ import telegram from "../../assets/images/succes/telegram.png";
 import { Link } from 'react-router-dom';
 
 export default function Success() {
+  const [formData, setFormData] = useState({
+    email: '',
+  });
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+    setFormData({
+      email: '',
+    });
+  };
+
+  const topRef = useRef(null);
+  useEffect(() => {
+    topRef.current.scrollIntoView({ behavior: "smooth" });
+  }, []);
   return (
     <div>
-      <div className="backgrond-div">
+      <div className="backgrond-div" ref={topRef}>
         <div className="header">
           <div className="header-container">
             <div className="header-div">
@@ -71,37 +94,41 @@ export default function Success() {
         <div className="container">
           <div className="results-div-grid">
             <div className="results-div-grid1">
-              <div className="results-div-grid1-button1">
-                <button>Originals</button>
-              </div>
-              <div className="results-div-grid1-button2">
-                <button>Disposables</button>
-              </div>
-              <div className="results-div-grid1-button3">
-                <button>HTFSE SAUCE</button>
+              <div className="results-div-grid1-border">
+                <div className="results-div-grid1-button1">
+                  <button>Originals</button>
+                </div>
+                <div className="results-div-grid1-button2">
+                  <button>Disposables</button>
+                </div>
+                <div className="results-div-grid1-button3">
+                  <button>HTFSE SAUCE</button>
+                </div>
               </div>
             </div>
             <div className="results-div-grid2">
-              <div className="results-div-grid2-head">
-                <h6>ORIGINALS</h6>
-              </div>
-              <div className="results-div-grid2-head-list">
-                <button>Animal Mints</button>
-                <button>Cake Batter</button>
-                <button>Forbidden Fruit</button>
-                <button>Grape Pie</button>
-                <button>Grapefruit</button>
-                <button>Jack Herer</button>
-                <button>Limeskunk</button>
-                <button>Nerds</button>
-                <button>Purple Punch</button>
-                <button>Snozzberry</button>
-                <button>Sundae Driver</button>
-                <button>Strawberry Cough</button>
-                <button>White Runtz</button>
-                <button>ATF</button>
-                <button>Casey Jones</button>
-                <button>Garanimals</button>
+              <div className="results-div-grid2-border">
+                <div className="results-div-grid2-head">
+                  <h6>ORIGINALS</h6>
+                </div>
+                <div className="results-div-grid2-head-list">
+                  <button>Animal Mints</button>
+                  <button>Cake Batter</button>
+                  <button>Forbidden Fruit</button>
+                  <button>Grape Pie</button>
+                  <button>Grapefruit</button>
+                  <button>Jack Herer</button>
+                  <button>Limeskunk</button>
+                  <button>Nerds</button>
+                  <button>Purple Punch</button>
+                  <button>Snozzberry</button>
+                  <button>Sundae Driver</button>
+                  <button>Strawberry Cough</button>
+                  <button>White Runtz</button>
+                  <button>ATF</button>
+                  <button>Casey Jones</button>
+                  <button>Garanimals</button>
+                </div>
               </div>
             </div>
           </div>
@@ -121,12 +148,14 @@ export default function Success() {
                 <Link to={"/contactus"}>Contact Us</Link>
               </div>
               <div className="footer-div1-flex-input-main">
-                <div className="footer-div1-flex-input">
-                  <input type="text" placeholder='Enter Email' />
-                  <div className="footer-div1-flex-button">
-                    <button>Subscribe</button>
+                <form onSubmit={handleSubmit}>
+                  <div className="footer-div1-flex-input">
+                    <input type="email" name='email' value={formData.email} onChange={handleChange} placeholder='Enter Email' required />
+                    <div className="footer-div1-flex-button">
+                      <button>Subscribe</button>
+                    </div>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>

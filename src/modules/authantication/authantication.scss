@@ -152,7 +152,7 @@ a {
                     flex-wrap: wrap;
                     gap: 20px;
                     input {
-                        width: 100%;
+                        width: calc(100% - 24px);
                     }
                     .footer-div1-flex-button {
                         position: static;

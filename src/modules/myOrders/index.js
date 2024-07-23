@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './myorders.scss'
 import logo from "../../assets/images/myOrders/logo.png";
 import instagram from "../../assets/images/myOrders/instagram.png";
@@ -10,9 +10,35 @@ import search from "../../assets/images/myOrders/search.png";
 import { Link } from 'react-router-dom';
 
 export default function Myorders() {
+    const [formData, setFormData] = useState({
+        email: '',
+        number: ''
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(formData);
+        setFormData({
+            email: '',
+            number: ''
+        });
+    };
+
+    const topRef = useRef(null);
+    useEffect(() => {
+      topRef.current.scrollIntoView({ behavior: "smooth" });
+    }, []);
     return (
         <div>
-            <div className="main-div-order">
+            <div className="main-div-order" ref={topRef}>
                 <div className="contant-div">
                     <div className="header">
                         <div className="header-container">
@@ -52,16 +78,16 @@ export default function Myorders() {
                     <div className="authintication">
                         <div className="container">
                             <div className="authintication-box">
-                                <div className="authintication-box-input">
+                                <form onSubmit={handleSubmit}>
                                     <div className="authintication-box-input-flex">
                                         <div className="authintication-box-input-flex-input">
-                                            <input type="number" placeholder='Enter Code' />
+                                            <input type="number" name='number' value={formData.number} onChange={handleChange} placeholder='Enter Code' required />
                                         </div>
                                         <div className="authintication-box-input-flex-button">
                                             <button>Submit</button>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -215,12 +241,14 @@ export default function Myorders() {
                                         <Link to={"/contactus"}>Contact Us</Link>
                                     </div>
                                     <div className="footer-div1-flex-input-main">
-                                        <div className="footer-div1-flex-input">
-                                            <input type="text" placeholder='Enter Email' />
-                                            <div className="footer-div1-flex-button">
-                                                <button>Subscribe</button>
+                                        <form onSubmit={handleSubmit}>
+                                            <div className="footer-div1-flex-input">
+                                                <input type="email" name='email' value={formData.email} onChange={handleChange} placeholder='Enter Email' required />
+                                                <div className="footer-div1-flex-button">
+                                                    <button>Subscribe</button>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

@@ -208,11 +208,20 @@ p {
                             align-items: center;
                             justify-content: space-around;
                             border-radius: 12px;
-                            @media (max-width: 576px) {
-                                height: 300px;
-                                img {
-                                    width: 30px;
-                                }
+                            p {
+                                writing-mode: vertical-lr;
+                                transform: rotate(180deg);
+                                font-family: Playfair Display;
+                                font-size: 26px;
+                                font-weight: 700;
+                                line-height: 32px;
+                                background: -webkit-linear-gradient(
+                                    rgba(161, 108, 244, 0.5),
+                                    rgba(255, 125, 167, 0.5),
+                                    rgba(255, 171, 112, 0.5)
+                                );
+                                background-clip: text;
+                                -webkit-text-fill-color: transparent;
                             }
                             .product-card-grid-div1-first-image {
                                 @media (max-width: 1024px) {
@@ -324,6 +333,15 @@ p {
                                 line-height: 22px;
                                 text-transform: uppercase;
                                 text-align: center;
+                                &:hover {
+                                    background: -webkit-linear-gradient(
+                                        rgba(161, 108, 244, 1),
+                                        rgba(255, 125, 167, 1),
+                                        rgba(255, 171, 112, 1)
+                                    );
+                                    background-clip: text;
+                                    -webkit-text-fill-color: transparent;
+                                }
                             }
                             @media (max-width: 1120px) {
                                 gap: 30px;
@@ -350,7 +368,7 @@ p {
                                 input {
                                     width: calc(450px - 24px);
                                     border-radius: 6px;
-                                    padding: 14px 0 14px 24px;
+                                    padding: 16px 0 16px 24px;
                                     border: none;
                                     color: #ffffff;
                                     background-color: #2a2a2c;
@@ -372,7 +390,7 @@ p {
                                     justify-content: flex-end;
                                     button {
                                         width: 140px;
-                                        height: 46px;
+                                        height: 50px;
                                         background: linear-gradient(
                                             rgba(161, 108, 244, 1),
                                             rgba(255, 125, 167, 1),
@@ -497,7 +515,7 @@ p {
                     height: 700px;
                 }
                 @media (max-width: 576px) {
-                    height: 740px;
+                    height: 900px;
                 }
             }
         }

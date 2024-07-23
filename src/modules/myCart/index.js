@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './mycart.scss'
 import logo from "../../assets/images/myCart/logo.png";
 import instagram from "../../assets/images/myCart/instagram.png";
@@ -15,9 +15,33 @@ import grpcicle from "../../assets/images/myCart/grpcicle.png";
 import { Link } from 'react-router-dom';
 
 export default function Mycart() {
+    const [formData, setFormData] = useState({
+        email: '',
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(formData);
+        setFormData({
+            email: '',
+        });
+    };
+
+    const topRef = useRef(null);
+    useEffect(() => {
+      topRef.current.scrollIntoView({ behavior: "smooth" });
+    }, []);
     return (
         <div>
-            <div className="main-div-cart">
+            <div className="main-div-cart" ref={topRef}>
                 <div className="contant-div">
                     <div className="header">
                         <div className="header-container">
@@ -118,15 +142,17 @@ export default function Mycart() {
                                     </div>
                                 </div>
                                 <div className="card-item-box-main-two">
-                                    <div className="card-item-box-main-two-div1">
-                                        <h1>Payment Detail</h1>
-                                        <p>Select payment method</p>
-                                        <button type='submit'><img src={grpcicle} alt="grpcicle" />COD</button>
-                                    </div>
-                                    <div className="card-item-box-main-two-div2">
-                                        <Link to={"/success"}>
-                                            <button type='submit'>Checkout</button>
-                                        </Link>
+                                    <div className="card-item-box-border">
+                                        <div className="card-item-box-main-two-div1">
+                                            <h1>Payment Detail</h1>
+                                            <p>Select payment method</p>
+                                            <button type='submit'><img src={grpcicle} alt="grpcicle" />COD</button>
+                                        </div>
+                                        <div className="card-item-box-main-two-div2">
+                                            <Link to={"/success"}>
+                                                <button type='submit'>Checkout</button>
+                                            </Link>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -146,12 +172,14 @@ export default function Mycart() {
                                         <Link to={"/contactus"}>Contact Us</Link>
                                     </div>
                                     <div className="footer-div1-flex-input-main">
-                                        <div className="footer-div1-flex-input">
-                                            <input type="text" placeholder='Enter Email' />
-                                            <div className="footer-div1-flex-button">
-                                                <button>Subscribe</button>
+                                        <form onSubmit={handleSubmit}>
+                                            <div className="footer-div1-flex-input">
+                                                <input type="email" name='email' value={formData.email} onChange={handleChange} placeholder='Enter Email' required />
+                                                <div className="footer-div1-flex-button">
+                                                    <button>Subscribe</button>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

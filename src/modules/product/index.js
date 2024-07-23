@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './product.scss'
 import cornerShadow from "../../assets/images/product/cornerShadow.png";
 import cloud1 from "../../assets/images/product/cloud1.png";
@@ -7,13 +7,9 @@ import rightShadow from "../../assets/images/product/rightShadow.png";
 import lock from "../../assets/images/product/lock.png";
 import lockbg from "../../assets/images/product/lockbg.png";
 import logo from "../../assets/images/product/logo.png";
-import tripleInfused from "../../assets/images/product/tripleInfused.png";
 import product1 from "../../assets/images/product/product1.png";
-import Torpedo from "../../assets/images/product/Torpedo.png";
 import product2 from "../../assets/images/product/produt2.png";
-import miniRockets from "../../assets/images/product/miniRockets.png";
 import product3 from "../../assets/images/product/product3.png";
-import Cartridges from "../../assets/images/product/Cartridges.png";
 import product4 from "../../assets/images/product/product4.png";
 import errow from "../../assets/images/product/errow.png";
 import instagram from "../../assets/images/product/instagram.png";
@@ -22,9 +18,33 @@ import copyright from "../../assets/images/product/copyright.png";
 import { Link } from 'react-router-dom';
 
 export default function Product() {
+    const [formData, setFormData] = useState({
+      email: '',
+    });
+  
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      setFormData({
+        ...formData,
+        [name]: value
+      });
+    };
+  
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      console.log(formData);
+      setFormData({
+        email: '',
+      });
+    };
+
+    const topRef = useRef(null);
+    useEffect(() => {
+      topRef.current.scrollIntoView({ behavior: "smooth" });
+    }, []);
     return (
         <div>
-            <div className="main-div-product">
+            <div className="main-div-product" ref={topRef}>
                 <div className="contant-div">
                     <div className="header">
                         <div className="header-container">
@@ -67,7 +87,7 @@ export default function Product() {
                             <div className="product-card-grid">
                                 <div className="product-card-grid-div1">
                                     <div className="product-card-grid-div1-first">
-                                        <img src={tripleInfused} alt="tripleInfused" />
+                                        <p>Triple Infused</p>
                                         <div className="product-card-grid-div1-first-image">
                                             <img src={product1} alt="product1" />
                                         </div>
@@ -86,7 +106,7 @@ export default function Product() {
                                 </div>
                                 <div className="product-card-grid-div1">
                                     <div className="product-card-grid-div1-first">
-                                        <img src={Torpedo} alt="Torpedo" />
+                                        <p>Torpedo</p>
                                         <div className="product-card-grid-div1-first-image">
                                             <img src={product2} alt="product2" />
                                         </div>
@@ -105,7 +125,7 @@ export default function Product() {
                                 </div>
                                 <div className="product-card-grid-div1">
                                     <div className="product-card-grid-div1-first">
-                                        <img src={miniRockets} alt="miniRockets" />
+                                        <p>Mini Rockets</p>
                                         <div className="product-card-grid-div1-first-image">
                                             <img src={product3} alt="product3" />
                                         </div>
@@ -124,7 +144,7 @@ export default function Product() {
                                 </div>
                                 <div className="product-card-grid-div1">
                                     <div className="product-card-grid-div1-first">
-                                        <img src={Cartridges} alt="Cartridges" />
+                                        <p>Cartridges</p>
                                         <div className="product-card-grid-div1-first-image">
                                             <img src={product4} alt="product4" />
                                         </div>
@@ -158,12 +178,14 @@ export default function Product() {
                                         <Link to={"/contactus"}>Contact Us</Link>
                                     </div>
                                     <div className="footer-div1-flex-input-main">
-                                        <div className="footer-div1-flex-input">
-                                            <input type="text" placeholder='Enter Email' />
-                                            <div className="footer-div1-flex-button">
-                                                <button>Subscribe</button>
+                                        <form onSubmit={handleSubmit}>
+                                            <div className="footer-div1-flex-input">
+                                                <input type="email" name='email' value={formData.email} onChange={handleChange} placeholder='Enter Email' required />
+                                                <div className="footer-div1-flex-button">
+                                                    <button>Subscribe</button>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

@@ -32,6 +32,9 @@ p {
     .header {
         padding: 50px 0 0 0;
         position: relative;
+        @media (max-width: 1024px) {
+            padding: 30px 0 0 0;
+        }
         .header-container {
             max-width: 950px;
             margin: 0 auto;
@@ -48,7 +51,6 @@ p {
                 padding: 15px 46px 15px 40px;
                 @media (max-width: 576px) {
                     padding: 15px;
-                    margin-top: 30px;
                 }
                 .header-div-flex {
                     display: flex;
@@ -114,6 +116,7 @@ p {
         }
     }
     .hero-banner {
+        position: relative;
         .hero-banner-head {
             display: flex;
             align-items: center;
@@ -254,7 +257,8 @@ p {
                     }
                     @media (max-width: 576px) {
                         gap: 20px;
-                        padding: 0 0 100px 0;
+                        grid-template-columns: repeat(1, 1fr);
+                        padding: 0;
                     }
                     .cb-contant-detail-grid1-div1 {
                         height: 360px;
@@ -269,6 +273,8 @@ p {
                         }
                         @media (max-width: 576px) {
                             padding: 40px;
+                            max-width: 200px;
+                            margin: 0 auto;
                             img {
                                 width: 100%;
                             }
@@ -319,6 +325,10 @@ p {
                         gap: 50px;
                         grid-template-columns: repeat(2, 1fr);
                     }
+                    @media (max-width: 576px) {
+                        gap: 20px;
+                        grid-template-columns: repeat(1, 1fr);
+                    }
                     .cb-contant-detail-grid2-div1 {
                         padding: 60px 0 0 0;
                         h3 {
@@ -357,7 +367,7 @@ p {
                                 padding: 0 0 70px 0;
                             }
                             @media (max-width: 576px) {
-                                padding: 0 0 30px 0;
+                                padding: 0;
                             }
                         }
                         .cb-contant-detail-grid2-div1-head2 {
@@ -378,6 +388,14 @@ p {
                         @media (max-width: 1024px) {
                             height: fit-content;
                             padding: 20px;
+                        }
+                        @media (max-width: 576px) {
+                            padding: 40px;
+                            max-width: 200px;
+                            margin: 0 auto;
+                            img {
+                                width: 100%;
+                            }
                         }
                     }
                 }

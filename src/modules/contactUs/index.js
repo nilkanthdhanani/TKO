@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './contactus.scss'
 import cornerShadow from "../../assets/images/contactUs/cornerShadow.png";
 import cloud1 from "../../assets/images/contactUs/cloud1.png";
@@ -12,9 +12,40 @@ import copyright from "../../assets/images/contactUs/copyright.png";
 import { Link } from 'react-router-dom';
 
 export default function Contactus() {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(formData);
+        setFormData({
+            name: '',
+            email: '',
+            subject: '',
+            message: ''
+        });
+    };
+
+    const topRef = useRef(null);
+    useEffect(() => {
+      topRef.current.scrollIntoView({ behavior: "smooth" });
+    }, []);
+
     return (
         <div>
-            <div className="main-div-contactus">
+            <div className="main-div-contactus" ref={topRef}>
                 <div className="contant-div">
                     <div className="header">
                         <div className="header-container">
@@ -55,17 +86,19 @@ export default function Contactus() {
                     <div className="contact-box">
                         <div className="container">
                             <div className="contact-box-input">
-                                <div className="contact-box-input-flex">
-                                    <input type="text" placeholder='Enter Name' />
-                                    <input type="email" placeholder='Enter Email' />
-                                </div>
-                                <input type="text" placeholder='Enter Subject' />
-                                <div className="contact-box-input-message">
-                                    <textarea placeholder='Message'></textarea>
-                                </div>
-                                <div className="contact-box-button">
-                                    <button>Submit</button>
-                                </div>
+                                <form onSubmit={handleSubmit}>
+                                    <div className="contact-box-input-flex">
+                                        <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Enter Name" required />
+                                        <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Enter Email" required />
+                                    </div>
+                                    <input type="text" name="subject" value={formData.subject} onChange={handleChange} placeholder="Enter Subject" required />
+                                    <div className="contact-box-input-message">
+                                        <textarea name="message" value={formData.message} onChange={handleChange} placeholder="Message" required></textarea>
+                                    </div>
+                                    <div className="contact-box-button">
+                                        <button>Submit</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -83,12 +116,14 @@ export default function Contactus() {
                                         <Link to={"/contactus"}>Contact Us</Link>
                                     </div>
                                     <div className="footer-div1-flex-input-main">
-                                        <div className="footer-div1-flex-input">
-                                            <input type="text" placeholder='Enter Email' />
-                                            <div className="footer-div1-flex-button">
-                                                <button>Subscribe</button>
+                                        <form onSubmit={handleSubmit}>
+                                            <div className="footer-div1-flex-input">
+                                                <input type="email" name='email' value={formData.email} onChange={handleChange} placeholder='Enter Email' required />
+                                                <div className="footer-div1-flex-button">
+                                                    <button>Subscribe</button>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -125,6 +160,6 @@ export default function Contactus() {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

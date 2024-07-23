@@ -193,69 +193,86 @@ p {
                     background: linear-gradient(0.27deg, rgba(255, 255, 255, 0) 0.26%, rgba(255, 255, 255, 0.1) 99.78%);
                     border: 1px solid rgba(255, 255, 255, 0.4);
                     border-radius: 16px;
+                    position: relative;
+                    &::after {
+                        position: absolute;
+                        content: "";
+                        left: -1%;
+                        bottom: -1%;
+                        height: 52%;
+                        width: 102%;
+                        background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+                        z-index: 2;
+                    }
                     @media (max-width: 576px) {
                         padding: 40px;
                     }
-                    input {
-                        background: rgba(255, 255, 255, 0.1);
-                        border-radius: 8px;
-                        width: calc(100% - 16px);
-                        border: none;
-                        padding: 16px 0 15px 16px;
-                        color: #ffffff;
-                        display: flex;
-                        &:focus {
-                            outline: none;
-                        }
-                    }
-                    ::placeholder {
-                        font-size: 14px;
-                        color: #dddddd;
-                        font-weight: 300;
-                        line-height: 19.1px;
-                    }
-                    .contact-box-input-flex {
-                        display: flex;
-                        align-items: center;
-                        gap: 30px;
-                        padding-bottom: 30px;
-                        @media (max-width: 576px) {
-                            flex-wrap: wrap;
-                        }
-                    }
-                    .contact-box-input-message {
-                        padding: 30px 0 0 0;
-                        textarea {
-                            display: block;
+                    form {
+                        position: relative;
+                        z-index: 3;
+                        input {
                             background: rgba(255, 255, 255, 0.1);
                             border-radius: 8px;
                             width: calc(100% - 16px);
                             border: none;
                             padding: 16px 0 15px 16px;
                             color: #ffffff;
-                            height: calc(100px - 31px);
+                            display: flex;
                             &:focus {
                                 outline: none;
                             }
                         }
-                    }
-                    .contact-box-button {
-                        padding-top: 60px;
-                        display: flex;
-                        justify-content: center;
-                        button {
-                            background: linear-gradient(
-                                rgba(161, 108, 244, 1),
-                                rgba(255, 125, 167, 1),
-                                rgba(255, 171, 112, 1)
-                            );
-                            border-radius: 6px;
-                            border: none;
-                            padding: 14px 63px;
-                            font-size: 16px;
-                            color: #ffffff;
-                            font-weight: 700;
-                            line-height: 22px;
+                        ::placeholder {
+                            font-size: 14px;
+                            color: #dddddd;
+                            font-weight: 300;
+                            line-height: 19.1px;
+                        }
+                        .contact-box-input-flex {
+                            display: flex;
+                            align-items: center;
+                            gap: 30px;
+                            padding-bottom: 30px;
+                            @media (max-width: 576px) {
+                                flex-wrap: wrap;
+                            }
+                        }
+                        .contact-box-input-message {
+                            padding: 30px 0 0 0;
+                            textarea {
+                                display: block;
+                                background: rgba(255, 255, 255, 0.1);
+                                border-radius: 8px;
+                                width: calc(100% - 16px);
+                                border: none;
+                                padding: 16px 0 15px 16px;
+                                color: #ffffff;
+                                height: calc(100px - 31px);
+                                resize: vertical;
+                                &:focus {
+                                    outline: none;
+                                }
+                            }
+                        }
+                        .contact-box-button {
+                            padding-top: 60px;
+                            display: flex;
+                            justify-content: center;
+                            button {
+                                background: linear-gradient(
+                                    rgba(161, 108, 244, 1),
+                                    rgba(255, 125, 167, 1),
+                                    rgba(255, 171, 112, 1)
+                                );
+                                border-radius: 6px;
+                                border: none;
+                                padding: 14px 63px;
+                                font-size: 16px;
+                                color: #ffffff;
+                                font-weight: 700;
+                                line-height: 22px;
+                                cursor: pointer;
+                            }
                         }
                     }
                 }
@@ -325,6 +342,15 @@ p {
                                 line-height: 22px;
                                 text-transform: uppercase;
                                 text-align: center;
+                                &:hover {
+                                    background: -webkit-linear-gradient(
+                                        rgba(161, 108, 244, 1),
+                                        rgba(255, 125, 167, 1),
+                                        rgba(255, 171, 112, 1)
+                                    );
+                                    background-clip: text;
+                                    -webkit-text-fill-color: transparent;
+                                }
                             }
                             @media (max-width: 1120px) {
                                 gap: 30px;
@@ -351,7 +377,7 @@ p {
                                 input {
                                     width: calc(450px - 24px);
                                     border-radius: 6px;
-                                    padding: 14px 0 14px 24px;
+                                    padding: 16px 0 16px 24px;
                                     border: none;
                                     color: #ffffff;
                                     background-color: #2a2a2c;
@@ -373,7 +399,7 @@ p {
                                     justify-content: flex-end;
                                     button {
                                         width: 140px;
-                                        height: 46px;
+                                        height: 50px;
                                         background: linear-gradient(
                                             rgba(161, 108, 244, 1),
                                             rgba(255, 125, 167, 1),
@@ -473,6 +499,7 @@ p {
             position: absolute;
             bottom: 0;
             right: 0;
+            z-index: -1;
             img {
                 display: block;
             }

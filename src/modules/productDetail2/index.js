@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import './productdetail2.scss';
 import shadow from "../../assets/images/productDetail2/shadow.png";
 import logo from "../../assets/images/productDetail2/logo.png";
@@ -20,9 +20,14 @@ import productVideo from "../../assets/images/productDetail2/productVideo.gif";
 import { Link } from 'react-router-dom';
 
 export default function ProductDetail2() {
+
+  const topRef = useRef(null);
+  useEffect(() => {
+    topRef.current.scrollIntoView({ behavior: "smooth" });
+  }, []);
   return (
     <div>
-      <div className="product-background">
+      <div className="product-background" ref={topRef}>
         <div className="product-background-shadow">
           <img src={shadow} alt="shadow" />
         </div>
@@ -56,7 +61,7 @@ export default function ProductDetail2() {
           <div className="hero-banner-head">
             <div className="first-div-head-main">
               <div className="first-div-head-main-title">
-                <h1>Triple<span>Infused</span>
+                <h1>Mini<span>Rockets</span>
                 </h1>
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since </p>
                 <div className="hero-banner-moon-button">
