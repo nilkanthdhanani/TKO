@@ -65,7 +65,9 @@ export default function ProductDetail2() {
                 </h1>
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since </p>
                 <div className="hero-banner-moon-button">
-                  <button>Add to cart</button>
+                  <Link to={"/cart"}>
+                    <button>Add to cart</button>
+                  </Link>
                 </div>
               </div>
             </div>

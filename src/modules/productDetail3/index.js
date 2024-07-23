@@ -56,11 +56,12 @@ export default function ProductDetail3() {
           <div className="hero-banner-head">
             <div className="first-div-head-main">
               <div className="first-div-head-main-title">
-                <h1>Mini<span>Rockets</span>
-                </h1>
+                <h1><span>Cartridges</span></h1>
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since </p>
                 <div className="hero-banner-moon-button">
-                  <button>Add to cart</button>
+                  <Link to={"/cart"}>
+                    <button>Add to cart</button>
+                  </Link>
                 </div>
               </div>
             </div>
